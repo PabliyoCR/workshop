@@ -1,0 +1,21 @@
+trigger:
+  - master
+pool:
+  vmImage: "ubuntu-lastest"
+steps:
+  - task: NodeTool@0
+    imputs:
+      versionSpec: "16.x"
+    displayName: "Install Node.js"
+  - script: |
+      npm install
+      npm run build
+    displayName: "installing and building"
+  - task: CopyFiles@2
+    inputs:
+      Contents: "build/**"
+      TargetFolder: "$(Build.ArtifactStagingDirectory)"
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: "$(Build.ArtifactStagingDirectory)"
+      Artifacto: "www"
