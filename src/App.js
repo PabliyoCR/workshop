@@ -21,7 +21,7 @@ function App() {
   }
   return (
     <div className='counter'>
-      <h1>React Counter</h1>
+      <h1>Workshop DevOps</h1>
       <span className='counter__output'>{counter}</span>
       <div className='btn__container'>
         <button className='control__btn' onClick={increase}>
